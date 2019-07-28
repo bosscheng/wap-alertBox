@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="_wap-font-scale" content="no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>弹窗组件</title>
+</head>
+<body>
+<pre style="background: #fff; margin: 10px;padding:10px 20px;overflow-x: auto;border-radius: 5px">
+    <code>
+    /**
+     * [AlertBox 弹框]
+     * @param {[type]} type  弹框类型 doubleBtn/onceCancel/onceConfirm/mini
+     * @param {[type]} alertType  弹框固定fixed /''滚动样式类型
+     * @param {[type]} alertCls  弹框class 可继承修改样式
+     * @param {[type]} title 弹框标题
+     * @param {[type]} msg 弹框内容
+     * @param {[type]} cancelText 取消按钮文本
+     * @param {[type]} confirmText 确认按钮文本
+     * @param {[type]} cancel 取消按钮回调事件
+     * @param {[type]} confirm 确认按钮回调事件
+     * @param {[type]} callback 弹框回调事件
+     * @return {[Function]}    [AlertBox({type:'doubleBtn',title:'温馨提示',...})]
+     */
+    </code>
+</pre>
+<a href="###" class="sn-btn sn-btn-positive sn-btn-big sn-btn-block mt10" id="mini">小弹窗 toast</a>
+<a href="###" class="sn-btn sn-btn-positive sn-btn-big sn-btn-block mt10" id="doubleBtn">双按钮弹窗</a>
+<a href="###" class="sn-btn sn-btn-positive sn-btn-big sn-btn-block mt10" id="onceCancel">只有取消按钮</a>
+<a href="###" class="sn-btn sn-btn-positive sn-btn-big sn-btn-block mt10" id="onceConfirm">只有确认按钮</a>
+<a href="###" class="sn-btn sn-btn-positive sn-btn-big sn-btn-block mt10" id="fixed">弹窗 fixed</a>
+<script src="../alertBox.js"></script>
+<div style="height:800px"></div>
+<script type="text/javascript">
+
+    function $(el) {
+        return document.querySelector(el);
+    }
+
+    // 小弹窗示例
+    $("#mini").addEventListener("click", function () {
+        _wap.AlertBox({
+            type: 'mini',
+            msg: "小弹窗 toast 示例",
+            delay:100000
+        })
+    }, false);
+
+    // 双按钮弹窗
+    $("#doubleBtn").addEventListener("click", function () {
+        _wap.AlertBox({
+            type: 'doubleBtn',
+            title: "双按钮弹窗",
+            msg: "双按钮弹窗内容",
+            cancel: function () {
+                alert("cancel")
+            },
+            confirm: function () {
+                alert("confirm")
+            }
+        })
+    }, false)
+
+    // 只有取消按钮弹窗
+    $("#onceCancel").addEventListener("click", function () {
+        _wap.AlertBox({
+            type: 'onceCancel',
+            msg: "只有取消按钮",
+            cancel: function () {
+                alert("cancel")
+            },
+            cancelText: "取消按钮文本"
+        })
+    }, false);
+
+    // 只有确认按钮弹窗
+    $("#onceConfirm").addEventListener("click", function () {
+        _wap.AlertBox({
+            type: 'onceConfirm',
+            msg: "只有确定按钮",
+            confirm: function () {
+                alert("confirm")
+            }
+        })
+    }, false)
+
+    // fixed
+    $("#fixed").addEventListener("click", function () {
+        _wap.AlertBox({
+            type: 'onceConfirm',
+            alertType: "fixed",
+            msg: "只有确定按钮",
+            confirm: function () {
+                alert("confirm")
+            }
+        })
+    }, false);
+
+
+</script>
+</body>
+</html>
